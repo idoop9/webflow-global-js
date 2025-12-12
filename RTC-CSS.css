@@ -1,0 +1,301 @@
+/* --------------------------------Hero Photos Dragger-------------------------------- */
+/* --------------------------------Hero Photos Dragger-------------------------------- */
+/* --------------------------------Hero Photos Dragger-------------------------------- */
+
+[data-flick-cards-dragger] {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: auto;
+  touch-action: pan-y;
+}
+
+/* Position Slides (also in Webflow Designer) */
+[data-flick-cards-item-status] .flick-card__media,
+:is(.wf-design-mode, .w-editor) .flick-card__media {
+  transition: opacity 0.2s ease;
+  opacity: 0.5;
+}
+
+[data-flick-cards-item-status="2-before"] .flick-card__media,
+[data-flick-cards-item-status="2-after"] .flick-card__media,
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-child(2) .flick-card__media,
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-last-child(1) .flick-card__media {
+  transition: opacity 0.2s ease;
+  opacity: 0.75;
+}
+
+[data-flick-cards-item-status="active"] .flick-card__media,
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-child(1) .flick-card__media {
+  opacity: 1;
+}
+
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-child(1) {
+  z-index: 4;
+}
+
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-child(2) {
+  transform: translate(25%, 1%) rotate(10deg) scale(0.9, 0.9);
+  z-index: 3;
+}
+
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-child(3) {
+  transform: translate(45%, 5%) rotate(15deg) scale(0.8, 0.8);
+  z-index: 2;
+}
+
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-last-child(1) {
+  transform: translate(-25%, 1%) rotate(-10deg) scale(0.9, 0.9);
+  z-index: 3;
+}
+
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-last-child(2) {
+  transform: translate(-45%, 5%) rotate(-15deg) scale(0.8, 0.8);
+  z-index: 2;
+}
+
+/* Animate Button */
+[data-flick-cards-item-status] .flick-card__btn,
+:is(.wf-design-mode, .w-editor) .flick-group__item .flick-card__btn {
+  transition: opacity 0.4s cubic-bezier(0.625, 0.05, 0, 1), 1s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translate(0%, 50%) rotate(0.001deg);
+}
+
+[data-flick-cards-item-status="active"] .flick-card__btn,
+:is(.wf-design-mode, .w-editor) .flick-group__item:nth-child(1) .flick-card__btn {
+  opacity: 1;
+  transform: translate(0%, 0%) rotate(0.001deg);
+}
+
+/* --------------------------------Logo Wall-------------------------------- */
+/* --------------------------------Logo Wall-------------------------------- */
+/* --------------------------------Logo Wall-------------------------------- */
+
+[data-logo-wall-list] [data-logo-wall-item]:nth-child(n+9) {
+  display: none;
+}
+
+@media screen and (max-width: 991px) {
+  [data-logo-wall-list] [data-logo-wall-item]:nth-child(n+7) {
+    display: none;
+  }
+}
+
+/* Global attribute to easily control easing and timing of all targetted elements */
+[data-button-anim-target] {
+  transition: transform 0.525s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+/* Fake a duplicate text element using text shadow without blur  */
+/* We save the distance in a variable for easy use in the CSS animation */
+.btn-icon-content__text {
+  --text-duplicate-distance: 1.5em;
+  text-shadow: 0px var(--text-duplicate-distance) currentColor;
+}
+
+/* Only apply hover animations if they are actually not supported */
+@media (hover:hover) and (pointer:fine) {
+
+  .btn-icon-link:hover .btn-icon-content__text {
+    transform: translate(0px, calc(-1 * var(--text-duplicate-distance)));
+  }
+
+  .btn-icon-link:hover .btn-icon-icon__bg {
+    transform: rotate(90deg);
+  }
+
+  .btn-icon-link:hover .btn-icon-icon__arrow {
+    transform: translate(200%, 0px);
+  }
+
+  .btn-icon-link:hover .btn-icon-content__bg {
+    transform: translate(0px, 0%) rotate(0deg);
+  }
+
+}
+
+/* --------------------------------Hero Button-------------------------------- */
+/* --------------------------------Hero Button-------------------------------- */
+/* --------------------------------Hero Button-------------------------------- */
+
+.btn-bubble-arrow__content {
+  transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+  transform: translateX(-3.75em) rotate(0.001deg);
+}
+
+.btn-bubble-arrow__arrow {
+  transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+  transform: scale(0) rotate(0.001deg);
+  transform-origin: left;
+}
+
+.btn-bubble-arrow__arrow-svg {
+  transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+  transform: rotate(0.001deg);
+}
+
+.btn-bubble-arrow__arrow.is--duplicate {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  transform: scale(1) rotate(0.001deg);
+  transform-origin: right;
+}
+
+/* Hover */
+
+.btn-bubble-arrow:hover .btn-bubble-arrow__content {
+  transform: translateX(0em) rotate(0.001deg);
+}
+
+.btn-bubble-arrow:hover .btn-bubble-arrow__arrow-svg {
+  transform: rotate(-45deg);
+}
+
+.btn-bubble-arrow:hover .btn-bubble-arrow__arrow {
+  transform: scale(1) rotate(0.001deg);
+}
+
+.btn-bubble-arrow:hover .btn-bubble-arrow__arrow.is--duplicate {
+  transform: scale(0) rotate(0.001deg);
+}
+
+/* --------------------------------Image Preview Cursor-------------------------------- */
+/* --------------------------------Image Preview Cursor-------------------------------- */
+/* --------------------------------Image Preview Cursor-------------------------------- */
+
+.preview-follower__inner,
+.preview-follower__label {
+  transition: opacity 0.1s ease, transform 0.6s cubic-bezier(0.65, 0.1, 0, 1);
+}
+
+/* html:not(.wf-design-mode) */
+.preview-follower__inner {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* html:not(.wf-design-mode) */
+.preview-follower__label {
+  opacity: 0;
+  transform: translate(0px, 100%);
+}
+
+.preview-follower [data-follower-visual] {
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .preview-item:last-of-type {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media (hover: hover) and (min-width: 992px) {
+  body:has([data-follower-collection]:hover) .preview-follower__inner {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  body:has([data-follower-collection]:hover) .preview-follower__label {
+    opacity: 1;
+    transform: translate(0px, 0%);
+  }
+
+  body:has(.preview-item:hover) .preview-item:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+/* --------------------------------Footer Parallax Effect-------------------------------- */
+/* --------------------------------Footer Parallax Effect-------------------------------- */
+/* --------------------------------Footer Parallax Effect-------------------------------- */
+
+/* Note: Both of the sets of CSS are not needed for the parallax effect */
+
+/* ------------------------- Scaling System by Osmo [https://osmo.supply/] -------------------------  */
+
+/* Desktop */
+:root {
+  --size-unit: 16;
+  /* body font-size in design - no px */
+  --size-container-ideal: 1440;
+  /* screen-size in design - no px */
+  --size-container-min: 992px;
+  --size-container-max: 1920px;
+  --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+  --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+}
+
+/* Tablet */
+@media screen and (max-width: 991px) {
+  :root {
+    --size-container-ideal: 834;
+    /* screen-size in design - no px */
+    --size-container-min: 768px;
+    --size-container-max: 991px;
+  }
+}
+
+/* Mobile Landscape */
+@media screen and (max-width: 767px) {
+  :root {
+    --size-container-ideal: 390;
+    /* screen-size in design - no px */
+    --size-container-min: 480px;
+    --size-container-max: 767px;
+  }
+}
+
+/* Mobile Portrait */
+@media screen and (max-width: 479px) {
+  :root {
+    --size-container-ideal: 390;
+    /* screen-size in design - no px */
+    --size-container-min: 320px;
+    --size-container-max: 479px;
+  }
+}
+
+/* ------------------------- Underline Link [https://osmo.supply/] -------------------------  */
+
+[data-underline-link] {
+  text-decoration: none;
+  position: relative;
+}
+
+[data-underline-link]::before {
+  content: "";
+  position: absolute;
+  bottom: -0.0625em;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: currentColor;
+  transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+  transform-origin: right;
+  transform: scaleX(0) rotate(0.001deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  [data-hover]:hover [data-underline-link]::before,
+  [data-underline-link]:hover::before {
+    transform-origin: left;
+    transform: scaleX(1) rotate(0.001deg);
+  }
+}
+
+/* --------------------------------Logo Reveal Loader-------------------------------- */
+
+.wf-design-mode .loader {
+  display: none;
+}
+
+[data-load-reset] {
+  opacity: 0;
+}
